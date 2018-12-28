@@ -13,10 +13,16 @@ namespace RiptDiscordBot.Common
         /// </summary>
         public static string DiscordToken { private set; get; }
 
+        public static readonly string DBConnectionString = @"Data Source=" + dbFilePath;
+
+        private static readonly string dbFilePath = System.IO.Directory.GetCurrentDirectory() + @"\system.db";
+
+        private static readonly string iniFilePath = System.IO.Directory.GetCurrentDirectory() + @"\setting.ini";
+
         /// <summary>
         /// 設定ファイルアクセサ
         /// </summary>
-        private static IniFile ini = new IniFile(System.IO.Directory.GetCurrentDirectory() + @"\setting.ini");
+        private static IniFile ini = new IniFile(iniFilePath);
 
         /// <summary>
         /// iniファイルから設定をロードする
