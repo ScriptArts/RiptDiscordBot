@@ -6,7 +6,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RiptDiscordBot.Commands
+namespace RiptDiscordBot.Modules.EveryoneUser
 {
     public class Infomation : ModuleBase
     {

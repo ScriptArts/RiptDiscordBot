@@ -1,18 +1,23 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace RiptDiscordBot.Common
+namespace RiptDiscordBot.Util
 {
-    public class IniFile
+    class IniFileAccesser
     {
         [DllImport("kernel32.dll")]
         private static extern int GetPrivateProfileString(
-        string lpApplicationName,
-        string lpKeyName,
-        string lpDefault,
-        StringBuilder lpReturnedstring,
-        int nSize,
-        string lpFileName);
+            string lpApplicationName,
+            string lpKeyName,
+            string lpDefault,
+            StringBuilder lpReturnedstring,
+            int nSize,
+            string lpFileName);
 
         [DllImport("kernel32.dll")]
         private static extern int WritePrivateProfileString(
@@ -27,9 +32,9 @@ namespace RiptDiscordBot.Common
         /// ファイル名を指定して初期化します。
         /// ファイルが存在しない場合は初回書き込み時に作成されます。
         /// </summary>
-        public IniFile(string filePath)
+        public IniFileAccesser()
         {
-            this.filePath = filePath;
+            this.filePath = System.IO.Path.Combine(Application.StartupPath, "setting.ini");
         }
 
         /// <summary>
