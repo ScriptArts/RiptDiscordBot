@@ -112,7 +112,7 @@ namespace TestProgram
         private Task Disconnected(Exception ex)
         {
             // ソフトウェア再起動で再接続
-            Console.WriteLine("異常を検知したためTUSBちゃんを再起動します...");
+            Console.WriteLine("異常を検知したためりぷとを再起動します...");
             System.Diagnostics.Process.Start(Application.ExecutablePath);
             Environment.Exit(0);
             return Task.CompletedTask;

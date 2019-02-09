@@ -63,5 +63,21 @@ namespace RiptDiscordBot.Modules.EveryoneUser
                 p.Dispose();
             }
         }
+
+        [Command("chat")]
+        [Summary("りぷとちゃんと会話します")]
+        public async Task Test(string word)
+        {
+            string reply = API.Talk.GetChat(word);
+            await ReplyAsync(reply);
+        }
+
+        [Command("reg")]
+        [Summary("")]
+        public async Task Reg()
+        {
+            string reply = API.Docomo.NaturalChatting.RegistrationUser();
+            await ReplyAsync(reply);
+        }
     }
 }

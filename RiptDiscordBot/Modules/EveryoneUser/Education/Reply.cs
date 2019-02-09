@@ -17,8 +17,7 @@ namespace RiptDiscordBot.Modules.EveryoneUser.Education
             var serverId = channel.Guild.Id;
             var content = message.Content;
             var sql = string.Format("SELECT * FROM 自動応答 WHERE サーバーID = '{0}'",
-                serverId,
-                content);
+                serverId);
 
             using (var table = DBAccesser.RunSQLGetResult(sql))
             {
@@ -39,7 +38,16 @@ namespace RiptDiscordBot.Modules.EveryoneUser.Education
                 {
                     var rnd = new Random();
                     var reply = list[rnd.Next(list.Count)];
-                    await message.Channel.SendMessageAsync(reply);
+
+                    if (reply == "$")
+                    {
+                        await message.Channel.SendMessageAsync(API.Talk.GetChat(content));
+                    }
+                    else
+                    {
+                        await message.Channel.SendMessageAsync(reply);
+                    }
+                    
                 }
             }
 
